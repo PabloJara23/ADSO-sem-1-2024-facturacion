@@ -66,47 +66,60 @@
 
       
     </nav>
-    <h2>Crear Producto</h2>   
-    <form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" placeholder="Describa el producto (dato único)">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="cantidad_inventario">Cantidad Inventario</label>
-            <input type="number" class="form-control" id="cantidad_inventario">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="precio_unitario">Precio Unitario</label>
-            <input type="number" class="form-control" id="precio_unitario">
-          </div>
-        </div>
+    <h2>Listado de Usuarios</h2>   
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del Usuario</th>
+            <th scope="col">ID de usuario	</th>
+            <th scope="col">N° identificación</th>
+            <th scope="col">Rol o perfil</th>
+            <th scope="col">Correo electronico</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Andrea Paola Gómez Ríos</td>
+            <td>usr001</td>
+            <td>1032547896</td>
+            <td>Administrador</td>
+            <td>andrea.gomez@sistemafactura.com</td>
+            <td>
+              <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Carlos Andrés Méndez Vargas</td>
+            <td>usr002</td>
+            <td>1008432671</td>
+            <td>Facturador</td>
+            <td>carlos.mendez@sistemafactura.com</td>                     
+            <td>
+              <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
+          </tr> 
+          <th scope="row">3</th>
+          <td>Juliana Fernanda Díaz Restrepo</td>
+          <td>usr003</td>
+          <td>1098765432</td>
+          <td>Supervisor</td>
+          <td>juliana.diaz@sistemafactura.com</td>
+          <td>
+            <button type="button" class="btn btn-success">Editar</button>
+            <button type="button" class="btn btn-danger">Borrar</button>
+          </td>
+        </tr>
+        <tr>
 
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="unidad_medida">Unidad de Medida</label>
-            <select id="unidad_medida" class="form-control">
-              <option selected>Por favor seleccione...</option>
-              <option value="GRS">GRS</option>
-              <option value="UND">UND</option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="categoria">Categoria</label>
-            <select id="categoria" class="form-control">
-              <option selected>Por favor seleccione...</option>
-              <option value="1">Alimentos</option>
-              <option value="2">Ropa</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </form>  
+        </tbody>
+      </table>
+      
+
 </body>
 </html>
-
-
-
-
-

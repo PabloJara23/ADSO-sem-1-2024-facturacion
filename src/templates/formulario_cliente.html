@@ -66,47 +66,44 @@
 
       
     </nav>
-    <h2>Crear Producto</h2>   
+    <h2>Crear Cliente</h2>   
     <form>
-        <div class="form-row">
+         <div class="form-row">
+           <div class="form-group col-md-6">
+             <label for="descripcion">Nombre del cliente</label>
+             <input type="text" class="form-control" id="descripcion" placeholder="(Nombre completo del cliente)">
+          </div>
+
           <div class="form-group col-md-6">
-            <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" placeholder="Describa el producto (dato único)">
+            <label for="descripcion">Fecha de nacimiento</label>
+             <input type="text" class="form-control" id="descripcion" placeholder="(DD/MM/AAAA)">
+
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="tipo_identificacion">Tipo de identificación</label>
+              <select id="tipo_identificacion" class="form-control">
+                <option selected>Por favor seleccione...</option>
+                <option value="1">Cedula de ciudadania</option>
+                <option value="2">Tarjeta de identidad</option>
+                <option value="3">Pasaporte</option>
+              </select>
+            </div>
+          <div class="form-group col-md-6">
+            <label for="descripcion">N° Identificación</label>
+             <input type="text" class="form-control" id="descripcion" placeholder="(Solo numeros)">
           </div>
           <div class="form-group col-md-6">
-            <label for="cantidad_inventario">Cantidad Inventario</label>
-            <input type="number" class="form-control" id="cantidad_inventario">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="precio_unitario">Precio Unitario</label>
-            <input type="number" class="form-control" id="precio_unitario">
+            <label for="descripcion">Correo electronico</label>
+            <input type="text" class="form-control" id="descripcion">
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="unidad_medida">Unidad de Medida</label>
-            <select id="unidad_medida" class="form-control">
-              <option selected>Por favor seleccione...</option>
-              <option value="GRS">GRS</option>
-              <option value="UND">UND</option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="categoria">Categoria</label>
-            <select id="categoria" class="form-control">
-              <option selected>Por favor seleccione...</option>
-              <option value="1">Alimentos</option>
-              <option value="2">Ropa</option>
-            </select>
+       
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>  
 </body>
 </html>
-
-
-
-
-

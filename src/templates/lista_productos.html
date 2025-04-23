@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">FACT</a>
+        <a class="navbar-brand" href="index.html">FACT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,17 +25,46 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="lista_productos.html">Listar Productos</a>
                 <a class="dropdown-item" href="formulario_producto.html">Crear Producto</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
 
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Clientes
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="lista_cliente.html">Listar Clientes</a>
+                    <a class="dropdown-item" href="formulario_cliente.html">Crear Clientes</a>
+                  </div>
+                </li>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Usuarios
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="lista_usuario.html">Listar Usuarios</a>
+                        <a class="dropdown-item" href="formulario_usuario.html">Crear Usuarios</a>
+                      </div>
+                    </li>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Facturas
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="lista_factura.html">Listar Facturas</a>
+                            <a class="dropdown-item" href="formulario_factura.html">Crear Facturas</a>
+                          </div>
+                        </li>
+
+      
     </nav>
     <h2>Listado de Productos</h2>   
     <table class="table">
@@ -53,9 +82,9 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Pan tajado bolsa 200 grs</td>
-            <td>100</td>
-            <td>5000</td>
+            <td>Arroz blanco 500 grs</td>
+            <td>120</td>
+            <td>2500</td>
             <td>Unidad</td>
             <td>Alimentos</td>
             <td>
@@ -65,16 +94,28 @@
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Carne cerdo costilla</td>
-            <td>10000</td>
-            <td>32</td>
-            <td>GRS</td>
+            <td>Leche entera 1 litro</td>
+            <td>250</td>
+            <td>3200</td>
+            <td>unidad</td>
             <td>Alimentos</td>                     
             <td>
               <button type="button" class="btn btn-success">Editar</button>
               <button type="button" class="btn btn-danger">Borrar</button>
             </td>
           </tr> 
+          <th scope="row">3</th>
+          <td>Carne molida res</td>
+          <td>10000</td>
+          <td>40</td>
+          <td>GRS</td>
+          <td>Alimentos</td>
+          <td>
+            <button type="button" class="btn btn-success">Editar</button>
+            <button type="button" class="btn btn-danger">Borrar</button>
+          </td>
+        </tr>
+        <tr>
 
         </tbody>
       </table>
