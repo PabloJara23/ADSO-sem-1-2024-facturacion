@@ -2,9 +2,11 @@
 
 
 {% block contenido %}  
-<h1>{{ titulo }}</h1>   
-    <table class="table">
-        <thead class="thead-dark">
+<h1 style="margin: 0 20px 20px 40px; color: #3b3934; display: flex; align-items: center;">{{ titulo }}</h1>   
+
+<div class="m-4 p-4 border rounded" style="background-color: #eee4c4;">
+  <table class="table">
+      <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Descripción</th>
@@ -14,8 +16,9 @@
             <th scope="col">Categoria</th>
             <th scope="col">Acciones</th>
           </tr>
-        </thead>
-        <tbody>
+      </thead>
+
+      <tbody>
           <tr>
             <th scope="row">1</th>
             <td>Arroz blanco 500 grs</td>
@@ -28,6 +31,7 @@
               <button type="button" class="btn btn-danger">Borrar</button>
             </td>
           </tr>
+
           <tr>
             <th scope="row">2</th>
             <td>Leche entera 1 litro</td>
@@ -40,20 +44,22 @@
               <button type="button" class="btn btn-danger">Borrar</button>
             </td>
           </tr> 
-          <th scope="row">3</th>
-          <td>Carne molida res</td>
-          <td>10000</td>
-          <td>40</td>
-          <td>GRS</td>
-          <td>Alimentos</td>
-          <td>
-            <button type="button" class="btn btn-success">Editar</button>
-            <button type="button" class="btn btn-danger">Borrar</button>
-          </td>
-        </tr>
-        <tr>
 
-        </tbody>
-      </table>
-      
+          <tr>
+           <th scope="row">3</th>
+            <td>Carne molida res</td>
+            <td>10000</td>
+            <td>40</td>
+            <td>GRS</td>
+            <td>Alimentos</td>
+            <td>
+              <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
+          
+          </tr>
+
+      </tbody>
+  </table>
+</div> 
       {% endblock contenido %}

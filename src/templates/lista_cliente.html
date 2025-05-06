@@ -2,8 +2,10 @@
 
 
 {% block contenido %}
-<h1>{{ titulo }}</h1>   
-<table class="table">
+<h1 style="margin: 0 20px 20px 40px; color: #3b3934; display: flex; align-items: center;">{{ titulo }}</h1>  
+
+<div class="m-4 p-4 border rounded" style="background-color: #eee4c4;">
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -15,6 +17,7 @@
         <th scope="col">Acciones</th>
       </tr>
     </thead>
+
     <tbody>
       <tr>
         <th scope="row">1</th>
@@ -28,6 +31,7 @@
           <button type="button" class="btn btn-danger">Borrar</button>
         </td>
       </tr>
+
       <tr>
         <th scope="row">2</th>
         <td>Juan Sebastián Martínez Ruiz</td>
@@ -39,22 +43,24 @@
           <button type="button" class="btn btn-success">Editar</button>
           <button type="button" class="btn btn-danger">Borrar</button>
         </td>
-      </tr> 
+      </tr>
+      
+      <tr>
       <th scope="row">3</th>
       <td>Laura Valentina Ramírez Castro</td>
       <td>21 de noviembre de 2008</td>
       <td>Tarjeta de identidad</td>
       <td>1090334512</td>
       <td>laurita.ramirez98@gmail.com</td>
-      <td>
+       <td>
         <button type="button" class="btn btn-success">Editar</button>
         <button type="button" class="btn btn-danger">Borrar</button>
-      </td>
+       </td>
     </tr>
-    <tr>
 
     </tbody>
   </table>
+</div>
 {% endblock contenido %}
    
       

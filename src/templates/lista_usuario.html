@@ -2,8 +2,10 @@
 
 
 {% block contenido %}
-<h1>{{ titulo }}</h1>   
-<table class="table">
+<h1 style="margin: 0 20px 20px 40px; color: #3b3934; display: flex; align-items: center;">{{ titulo }}</h1> 
+
+<div class="m-4 p-4 border rounded" style="background-color: #eee4c4;">
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -15,6 +17,7 @@
         <th scope="col">Acciones</th>
       </tr>
     </thead>
+
     <tbody>
       <tr>
         <th scope="row">1</th>
@@ -28,6 +31,7 @@
           <button type="button" class="btn btn-danger">Borrar</button>
         </td>
       </tr>
+
       <tr>
         <th scope="row">2</th>
         <td>Carlos Andrés Méndez Vargas</td>
@@ -40,6 +44,8 @@
           <button type="button" class="btn btn-danger">Borrar</button>
         </td>
       </tr> 
+
+      <tr>
       <th scope="row">3</th>
       <td>Juliana Fernanda Díaz Restrepo</td>
       <td>usr003</td>
@@ -51,10 +57,9 @@
         <button type="button" class="btn btn-danger">Borrar</button>
       </td>
     </tr>
-    <tr>
 
     </tbody>
   </table>
-
+</div>
 {% endblock contenido %}
     

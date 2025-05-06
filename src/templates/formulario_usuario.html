@@ -2,29 +2,34 @@
 
 
 {% block contenido %}
-<h1>{{ titulo }}</h1>   
-<form>
+
+<h1 style="margin: 0 20px 20px 40px; color: #3b3934; display: flex; align-items: center;">{{ titulo }}
+  <img src="{{ url_for('static', filename='img/ok.avif') }}" alt="Logo" style="height: 30px; margin-left: 10px;"> </h1> 
+  
+
+<form class="m-4 p-4 border rounded">
      <div class="form-row">
-       <div class="form-group col-md-6">
-         <label for="descripcion">Nombre del usuario</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(Nombre completo del usuario)">
+       <div class="form-group col-md-5">
+         <label for="nombre_usuario">Nombre del usuario</label>
+         <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="(Nombre completo del usuario)" onblur="validarNombreUsuario()">
+         <span class="alert alert-danger" role="alert" id="errorNombreUsuario" style="display: none;">
+          El campo no puede estar vacío.
+        </span>
+       </div>
+   
+      <div class="form-group col-md-3">
+        <label for="id_usuario">ID usuario</label>
+         <input type="text" class="form-control" id="id_usuario" name="id_usuario" placeholder="(ID)">
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="descripcion">ID usuario</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(ID)">
-
+      <div class="form-group col-md-3">
+        <label for="identificacion_usuario">N° Identificación</label>
+         <input type="number" class="form-control" id="identificacion_usuario" name="identificacion_usuario" placeholder="(Solo numeros)">
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="descripcion">N° Identificación</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(Solo numeros)">
-      </div>
-
-      <div class="form-row">
         <div class="form-group col-md-4">
-          <label for="Rol_perfil">Rol o perfil</label>
-          <select id="Rol_perfil" class="form-control">
+          <label for="Rol_perfil">Rol</label>
+          <select id="Rol_perfil" name="rol_perfil" class="form-control">
             <option selected>Por favor seleccione...</option>
             <option value="1">Administrador</option>
             <option value="2">Facturador</option>
@@ -32,16 +37,59 @@
           </select>
         </div>
       
-      <div class="form-group col-md-6">
-        <label for="descripcion">Correo electronico</label>
-        <input type="text" class="form-control" id="descripcion">
-      </div>
+        <div class="form-group col-md-5">
+          <label for="email_usuario">Correo electrónico</label>
+          <input type="text" class="form-control" id="email_usuario" name="email_usuario" placeholder="usuario@ejemplo.com" onblur="validarCorreo()">
+          <span class="alert alert-danger" role="alert" id="errorCorreo" style="display: none;">
+            El correo debe tener un @, un dominio, un punto y terminar en ".com" (ej: usuario@dominio.com)
+          </span>
+        </div> 
+
     </div>
 
-   
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+     <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+
   </form>  
+
+  
+  <script type="text/javascript">
+
+   // Validación del campo email_usuario 
+   function validarCorreo() {
+    console.log("Entró a la función");
+    let campoCorreo = document.getElementById("email_usuario");
+    let valorCorreo = campoCorreo.value;
+    let errorCorreo = document.getElementById("errorCorreo");
+    console.log("El valor del correo escrito es: " + valorCorreo);
+    var expresionRegular = new RegExp("[a-zA-Z0-9.-_+]{1,}@[a-zA-Z]{1,}[.][a-zA-Z]{2,3}$"); 
+    if (expresionRegular.test(valorCorreo)) {
+      console.log("El correo cumple con la validación");
+      errorCorreo.style.display = 'none';  
+
+    } else {
+      console.log("El correo NO cumple con la validación");
+      errorCorreo.style.display = 'block';  
+    }
+  }
+
+  // Validación del campo nombre_usuario
+  function validarNombreUsuario() {
+    console.log("Entró a la función");
+    const campoNombre = document.getElementById("nombre_usuario");
+    const valorNombre = campoNombre.value.trim(); 
+    const errorNombre = document.getElementById("errorNombreUsuario");
+
+    if (valorNombre === "") {
+      console.log("El nombre NO cumple con la validación");
+      errorNombre.style.display = 'block';
+      
+    } else {
+      console.log("El nombre cumple con la validación");
+      errorNombre.style.display = 'none';
+    }
+  }
+</script>
+  
+  
 {% endblock contenido %}
   

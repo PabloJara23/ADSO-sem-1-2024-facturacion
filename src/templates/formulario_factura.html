@@ -2,124 +2,224 @@
 
 
 {% block contenido %}
-<h1>{{ titulo }}</h1>   
-<form>
-     <div class="form-row">
-       <div class="form-group col-md-6">
-         <label for="descripcion">ID Factura</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(ID Factura)">
-      </div>
 
-      <div class="form-group col-md-6">
-        <label for="descripcion">Fecha</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(dd/mm/aaaa)">
+<!-- Formulario de factura -->
+<h1 style="margin: 0 20px 0 40px; color: #3b3934; display: flex; align-items: center;">{{ titulo }}</h1> 
 
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="descripcion">Cliente</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(Nombre del cliente)">
-      </div>
-
-                
-      <div class="form-group col-md-6">
-        <label for="descripcion">Dirección</label>
-        <input type="text" class="form-control" id="Total">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="descripcion">Codigo producto</label>
-        <input type="text" class="form-control" id="Total">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="descripcion">Cantidad</label>
-        <input type="text" class="form-control" id="Total">
-      </div>
-      <button type="button" class="btn btn-success">Agregar</button>
+<form action="/factura_creada" class="m-4 p-4 border rounded">
+    
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="id_factura">ID Factura</label>
+      <input type="text" class="form-control" id="id_factura" name="id_factura" placeholder="(ID Factura)">
     </div>
 
-   
-      
-  </form> 
-</div>
-</div> 
+    <div class="form-group col-md-3">
+      <label for="fecha_factura">Fecha</label>
+        <input type="date" class="form-control" id="fecha_factura" placeholder="(DD/MM/AAAA)">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="nombre_cliente">Cliente</label>
+        <input type="text" class="form-control" id="nombre_cliente" placeholder="(Nombre del cliente)">
+    </div>
+     
+    <div class="form-group col-md-4">
+      <label for="direccion_cliente_factura">Dirección</label>
+        <input type="text" class="form-control" id="direccion_cliente_factura" placeholder="(Dirección del cliente)">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="codigo_producto">Codigo producto</label>
+        <input type="text" class="form-control" id="codigo_producto" placeholder="Ej: 01230" onblur="validarCodigoProducto()">
+        <span class="alert alert-danger" role="alert" id="errorCodigoProducto" style="display: none;">
+          El código debe comenzar con un número del 0 al 4, seguir con tres dígitos y terminar con un número del 5 al 9 (ej: 01235)
+        </span>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="unidad_medida">Unidad de Medida</label>
+      <select id="unidad_medida" class="form-control">
+        <option selected>Por favor seleccione...</option>
+        <option value="GRS">GRS</option>
+        <option value="UND">UND</option>
+          </select>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="cantidad_producto">Cantidad</label>
+        <input type="number" class="form-control" id="cantidad_producto">
+    </div>
+  </div>  
+  
+   <div class="d-flex justify-content-end mt-3">
+    <button type="submit" class="btn btn-primary btn-sm" style="margin-right: 10px;" >Guardar</button>
+    <button type="button" class="btn btn-secondary btn-sm">Cancelar</button>
+   </div>
+
+</form>
+
+<script type="text/javascript"> 
+
+  // Validación del campo codigo_producto
+  function validarCodigoProducto() {
+    console.log("Entró a la función");
+    let campoCodigo = document.getElementById("codigo_producto");
+    let valorCodigo = campoCodigo.value;
+    let errorCodigo = document.getElementById("errorCodigoProducto");
+    console.log("El valor del código escrito es: " + valorCodigo);
+
+    var expresionRegular = new RegExp("^[0-4]{1}[0-9]{3}[5-9]{1}$");
+
+    if (expresionRegular.test(valorCodigo)) {
+      console.log("El código cumple con la validación");
+      errorCodigo.style.display = 'none';  
+    } else {
+      console.log("El código NO cumple con la validación");
+      errorCodigo.style.display = 'block';  
+    }
+  }
+</script>
+
+<!-- Tabla de facturas -->
+<div class="mx-4 my-2 px-4 py-2 border rounded" style="background-color: #cec299;">
+
+<h1 style="color: #3b3934; display: flex; align-items: center; justify-content: center;">Facturas
+  <img src="{{ url_for('static', filename='img/ok.avif') }}" alt="Logo" style="height: 30px; margin-left: 10px;"> </h1> 
 
 
-</nav>
-<h2>Facturas</h2>   
-<table class="table">
-    <thead class="thead-dark">
+ <table class="table table-bordered table-hover text-center align-middle">
+  <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">ID Factura</th>
         <th scope="col">Fecha</th>
         <th scope="col">Cliente</th>
-        <th scope="col">Total</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Codigo producto</th>
         <th scope="col">Productos</th>
+        <th scope="col">Unidad de medida</th>
+        <th scope="col">Sub total</th>
         <th scope="col">Forma de Pago</th>
+        <th scope="col">Total</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
-    <tbody>
+     <tbody>
       <tr>
         <th scope="row">1</th>
         <td>F001-0001</td>
         <td>2025-04-21</td>
         <td>Mariana López Torres</td>
-        <td>35000</td>
-        <td> <ul>
-            <li>Arroz 5kg x1 18500</li>
-            <li>Aceite Premier 1L x1 12000</li>
-            <li>Sal 1kg x1 4500</li>
+        <td>Cra24#10-12</td>
+        <td> 
+          <ul>
+           <li>03070</li>
+           <li>03450</li>
+           <li>01220</li>
+          </ul></td>
+        <td>
+          <ul>
+           <li>Arroz</li>
+           <li>Aceite</li>
+           <li>Sal</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>GRS</li>
+           <li>UND</li>
+           <li>GRS</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>18500</li>
+           <li>12000</li>
+           <li>4500</li>
           </ul>
         </td>
         <td>Efectivo</td>
-        <td>
-          <button type="button" class="btn btn-success">Editar</button>
-          <button type="button" class="btn btn-danger">Borrar</button>
+        <td>35000</td>
+        <td style="white-space: nowrap;">
+          <button type="button" class="btn btn-success btn-sm me-1" style="font-size: 0.7rem; padding: 2px 6px;" title="Editar factura F001-0001">Editar</button>
+          <button type="button" class="btn btn-danger btn-sm" style="font-size: 0.7rem; padding: 2px 6px;" title="Borrar factura F001-0001">Borrar</button>
         </td>
       </tr>
+
       <tr>
         <th scope="row">2</th>
         <td>F001-0002</td>
         <td>2025-04-21</td>
         <td>Juan Sebastian Martínez Ruiz</td>
-        <td>7900</td>
-        <td> <ul>
-            <li>Pan Tajado x1 7900</li>
+        <td>Calle14#45-16</td>
+        <td>
+          <ul>
+           <li>07930</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+            <li>Pan tajado</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>UND</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>7900</li>
           </ul>
         </td>
         <td>Efectivo</td>
-        <td>
-          <button type="button" class="btn btn-success">Editar</button>
-          <button type="button" class="btn btn-danger">Borrar</button>
+        <td>7900</td>
+        <td style="white-space: nowrap;">
+          <button type="button" class="btn btn-success btn-sm me-1" style="font-size: 0.7rem; padding: 2px 6px;" title="Editar factura F001-0002">Editar</button>
+          <button type="button" class="btn btn-danger btn-sm" style="font-size: 0.7rem; padding: 2px 6px;" title="Borrar factura F001-0002">Borrar</button>
         </td>
-      </tr> 
-      <th scope="row">3</th>
+      </tr>
+
+      <tr>
+        <th scope="row">3</th>
         <td>F001-0003</td>
         <td>2025-04-21</td>
         <td>Laura Ramírez Castro</td>
-        <td>22200</td>
-        <td> <ul>
-            <li>Chocolate 250g x1 10200</li>
-            <li>Aceite 1L x1 12000</li>
+        <td>Calle25#23-54</td>
+        <td> 
+          <ul>
+           <li>06100</li>
+           <li>03450</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>Chocolate</li>
+           <li>Aceite</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>UND</li>
+           <li>UND</li>
+          </ul>
+        </td>
+        <td> 
+          <ul>
+           <li>10200</li>
+           <li>12000</li>
           </ul>
         </td>
         <td>Efectivo</td>
-        <td>
-        <button type="button" class="btn btn-success">Editar</button>
-        <button type="button" class="btn btn-danger">Borrar</button>
-      </td>
-    </tr>
-    <tr>
-      
-
+        <td>22200</td>
+        <td style="white-space: nowrap;">
+          <button type="button" class="btn btn-success btn-sm me-1" style="font-size: 0.7rem; padding: 2px 6px;" title="Editar factura F001-0003">Editar</button>
+          <button type="button" class="btn btn-danger btn-sm" style="font-size: 0.7rem; padding: 2px 6px;" title="Borrar factura F001-0003">Borrar</button>
+        </td>
+      </tr> 
     </tbody>
-  </table>
+  </table>     
 </div>
-</div>
-<button type="submit" class="btn btn-primary">Guardar</button>
-</form>    
+
 {% endblock contenido %}
-  

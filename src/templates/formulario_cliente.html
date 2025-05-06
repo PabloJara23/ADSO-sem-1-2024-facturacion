@@ -2,44 +2,45 @@
 
 
 {% block contenido %}
-<h1>{{ titulo }}</h1>   
-<form>
-     <div class="form-row">
-       <div class="form-group col-md-6">
-         <label for="descripcion">Nombre del cliente</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(Nombre completo del cliente)">
+<h1 style="margin: 0 20px 20px 40px; color: #3b3934; display: flex; align-items: center;">{{ titulo }}
+  <img src="{{ url_for('static', filename='img/ok.avif') }}" alt="Logo" style="height: 30px; margin-left: 10px;"> </h1> 
+
+<form class="m-4 p-4 border rounded">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+         <label for="nombre_cliente ">Nombre del cliente</label>
+         <input type="text" class="form-control" id="nombre_cliente " placeholder="(Nombre completo del cliente)">
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="descripcion">Fecha de nacimiento</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(DD/MM/AAAA)">
-
+      <div class="form-group col-md-2">
+        <label for="fecha_cliente">Fecha de nacimiento</label>
+         <input type="date" class="form-control" id="fecha_cliente" placeholder="(DD/MM/AAAA)">  
       </div>
 
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="tipo_identificacion">Tipo de identificación</label>
-          <select id="tipo_identificacion" class="form-control">
-            <option selected>Por favor seleccione...</option>
-            <option value="1">Cedula de ciudadania</option>
-            <option value="2">Tarjeta de identidad</option>
-            <option value="3">Pasaporte</option>
-          </select>
-        </div>
-      <div class="form-group col-md-6">
-        <label for="descripcion">N° Identificación</label>
-         <input type="text" class="form-control" id="descripcion" placeholder="(Solo numeros)">
+      <div class="form-group col-md-3">
+        <label for="tipo_identificacion">Tipo de identificación</label>
+        <select id="tipo_identificacion" class="form-control">
+           <option selected>Por favor seleccione...</option>
+           <option value="1">Cedula de ciudadania</option>
+           <option value="2">Tarjeta de identidad</option>
+          <option value="3">Pasaporte</option>
+         </select>
       </div>
-      <div class="form-group col-md-6">
-        <label for="descripcion">Correo electronico</label>
-        <input type="text" class="form-control" id="descripcion">
+
+      <div class="form-group col-md-4">
+        <label for="identificacion_cliente">N° Identificación</label>
+         <input type="number" class="form-control" id="identificacion_cliente" placeholder="(Solo numeros)">
       </div>
+
+      <div class="form-group col-md-5">
+        <label for="email_cliente">Correo electronico</label>
+        <input type="email" class="form-control" id="email_cliente" placeholder="(cliente@ejemplo.com)">
+      </div>
+
     </div>
 
-   
-      </div>
-    </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
-  </form>  
+</form>  
+
 {% endblock contenido %}
     

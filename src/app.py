@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
 @app.route('/')
 def index():
-    return render_template('index.html',titulo='Bienvenido a la aplicación de facturación')
+    return render_template('index.html',titulo='Bienvenido a FactuNet: Tu sistema de facturación')
 
 @app.route('/lista_productos')
 def lista_productos():
@@ -35,7 +35,9 @@ def formulario_usuario():
 
 @app.route('/formulario_factura')
 def formulario_factura():
-    return render_template('formulario_factura.html',titulo='Facturas')   
+    return render_template('formulario_factura.html',titulo='Facturar:')   
 
-
+@app.route('/factura_creada')
+def factura_creada():
+    return render_template('factura_creada.html',titulo='Factura creada!')
 
